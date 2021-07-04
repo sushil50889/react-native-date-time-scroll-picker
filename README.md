@@ -130,3 +130,66 @@ export default ExampleComponent2;
   </tr>      
 </table>
 
+
+## Example 3
+
+```jsx
+import React from 'react';
+import {Text} from 'react-native';
+import RNDateTimeSelector from "react-native-date-time-scroll-picker";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+
+const setTimerWidthHeight = wp(75);
+const selectedItemTextSize = 38;
+
+
+const dataSet = {
+  data: {
+    firstColumn: [...Array(6).keys()].map((item, idx)=> {return {value: item, index: idx}}),
+    secondColumn: [...Array(60).keys()].map((item, idx)=> {return {value: item, index: idx}}),
+    thirdColumn: [...Array(60).keys()].map((item, idx)=> {return {value: item, index: idx}}),
+  },
+  initials: [1,2,5]  
+}
+
+
+const ExampleComponent3 = ()=> {
+
+  const seperatorComponentRenderer = ()=>{
+    return <Text style={{fontSize: selectedItemTextSize, lineHeight: setTimerWidthHeight*0.15}}>/</Text>
+  }
+  
+  return (
+      <RNDateTimeSelector 
+              dataSet={dataSet}
+              onValueChange={(value)=>{
+                console.log('data on users end :   ... ', value);
+              }}
+              containerStyle={{
+                alignSelf: 'center',
+                borderWidth: 0, 
+                borderColor: 'transparent', 
+                borderRadius: 0, 
+                height: wp(62.5)
+              }}
+              seperatorComponent={seperatorComponentRenderer}
+              seperatorContainerStyle={{
+                width: wp(4)
+              }}
+      />
+  )
+}
+
+export default ExampleComponent3;
+
+```
+
+### Output :
+<table>
+  <tr>
+    <td><img src="https://res.cloudinary.com/sushilmandi/image/upload/Capture121_upgkul.jpg" alt="react-native-date-time-scroll-picker Android" height="150px" style="margin-left:10px" />
+    </td>    
+  </tr>      
+</table>
+

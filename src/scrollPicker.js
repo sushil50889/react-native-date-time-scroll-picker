@@ -20,8 +20,9 @@ const highlightColor="rgba(0,0,0,0)";
 const RenderItem = ({isSelected, currentIndex, data}) => {
     return (
         <View style={{alignItems: 'center', justifyContent: 'center', height: 60}}>
-            <Text style={{alignSelf: 'center', textAlign: 'center', fontSize: isSelected ? selectedItemTextSize : (parseInt(data.index) == parseInt(currentIndex)+1 || parseInt(data.index) == parseInt(currentIndex)-1) ? nonSelectedItemTextSize : farItemTextSize, color: isSelected ? 'rgba(0,0,0,1)' : (parseInt(data.index) == parseInt(currentIndex)+1 || parseInt(data.index) == parseInt(currentIndex)-1) ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.15)'}}>
-                {data.value.toString().length == 2 ? data.value : `0${data.value}`}
+            <Text 
+            style={{alignSelf: 'center', textAlign: 'center', fontSize: isSelected ? selectedItemTextSize : (parseInt(data.index) == parseInt(currentIndex)+1 || parseInt(data.index) == parseInt(currentIndex)-1) ? nonSelectedItemTextSize : farItemTextSize, color: isSelected ? 'rgba(0,0,0,1)' : (parseInt(data.index) == parseInt(currentIndex)+1 || parseInt(data.index) == parseInt(currentIndex)-1) ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.15)'}}>
+                {data.value}
             </Text>
         </View>
     )

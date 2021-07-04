@@ -1,20 +1,31 @@
 
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import TimePicker from './scrollPicker';
 
 
 const setTimerWidthHeight = wp(75);
 const pickerWidth = wp(12);
-const selectedItemTextSize = 38;
 const borderWidth = 25;
+
+
+// --------------------------------------------------------------------------
+// ----------- Seperator Component view -----------
+// --------------------------------------------------------------------------
+const SeperatorComponent = ({seperatorComponent, seperatorContainerStyle={}}) => {
+    return (
+        <View style={[{alignItems: 'center', justifyContent: 'center', width: wp(2.2)}, {...seperatorContainerStyle}]}>
+            {seperatorComponent()}
+        </View>
+    )
+}
 
 
 // --------------------------------------------------------------------------
 // ----------- Main Time duration select section starts  -----------
 // --------------------------------------------------------------------------
-const RNDateTimeSelector = ({dataSet, onValueChange, containerStyle}) => {
+const RNDateTimeSelector = ({dataSet, onValueChange, seperatorComponent, seperatorContainerStyle={}, containerStyle={}}) => {
 
 
    const checkForCurrectIndex = (key, index)=>{
@@ -39,8 +50,6 @@ const RNDateTimeSelector = ({dataSet, onValueChange, containerStyle}) => {
        }
    }
 
-
-   
 
   const [firstColumnValue, setHours] = React.useState(setInitialValueToState('firstColumn', dataSet.initials[0]));
   const [secondColumnValue, setMinutes] = React.useState(setInitialValueToState('secondColumn', dataSet.initials[1]));
@@ -81,16 +90,18 @@ const returnValue = (data, column)=>{
           <View style={[styles.mainContainer, {...containerStyle}]}>
 
               <View style={{width: pickerWidth}}>
-                  <TimePicker pickerData={dataSet.data && dataSet.data.firstColumn ? dataSet.data.firstColumn : []} selectedIndex={checkForCurrectIndex('firstColumn', dataSet.initials[0]) ? dataSet.initials[0] : 0} setStateMethod={returnValue} column={1}/>
+                  <TimePicker 
+                  pickerData={dataSet.data && dataSet.data.firstColumn ? dataSet.data.firstColumn : []} 
+                  selectedIndex={checkForCurrectIndex('firstColumn', dataSet.initials[0]) ? dataSet.initials[0] : 0} setStateMethod={returnValue} column={1}/>
               </View>
 
-              <View style={{alignItems: 'center', justifyContent: 'center', width: wp(2.2)}}><Text style={{fontSize: selectedItemTextSize, lineHeight: setTimerWidthHeight*0.15}}>:</Text></View>
+              <SeperatorComponent seperatorComponent={seperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
 
               <View style={{width: pickerWidth}}>
                   <TimePicker pickerData={dataSet.data && dataSet.data.secondColumn ? dataSet.data.secondColumn : []} selectedIndex={checkForCurrectIndex('secondColumn', dataSet.initials[1]) ? dataSet.initials[1] : 0} setStateMethod={returnValue} column={2}/>
               </View>
 
-              <View style={{alignItems: 'center', justifyContent: 'center', width: wp(2.2)}}><Text style={{fontSize: selectedItemTextSize, lineHeight: setTimerWidthHeight*0.15}}>:</Text></View>
+              <SeperatorComponent seperatorComponent={seperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
 
               <View style={{width: pickerWidth}}>
                   <TimePicker pickerData={dataSet.data && dataSet.data.thirdColumn ? dataSet.data.thirdColumn : []} selectedIndex={checkForCurrectIndex('thirdColumn', dataSet.initials[2]) ? dataSet.initials[2] : 0} setStateMethod={returnValue} column={3}/>
