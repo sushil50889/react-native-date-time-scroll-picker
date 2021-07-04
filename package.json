@@ -1,0 +1,25 @@
+{
+  "name": "react-native-date-time-scroll-picker",
+  "version": "0.0.5",
+  "private": false,
+  "description": "react native date time scroll picker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react-native-picker", "react-native", "date-time-picker", "wheel", "picker", "scrollview", "roll-picker-native", "react-native", "timepicker", "datetime", "datepicker", "date-picker", "date picker", "react native datetimepicker", "react-native-date-picker", "react native date time picker", "react native datepicker"],
+  "author": "sushil mandi",
+  "license": "MIT",
+  "devDependencies": {
+    "react": "17.0.2",
+    "react-native": "0.64.1"
+  },
+  "peerDependencies": {
+    "react": "17.0.2",
+    "react-native": "0.64.1"
+  },
+  "dependencies": {
+    "react-native-responsive-screen": "^1.4.2",
+    "react-native-picker-scrollview": "^1.0.1"
+  }
+}
