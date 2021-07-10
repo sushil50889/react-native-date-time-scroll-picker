@@ -25,7 +25,7 @@ const SeperatorComponent = ({seperatorComponent, seperatorContainerStyle={}}) =>
 // --------------------------------------------------------------------------
 // ----------- Main Time duration select section starts  -----------
 // --------------------------------------------------------------------------
-const RNDateTimeSelector = ({dataSet, onValueChange, seperatorComponent, seperatorContainerStyle={}, containerStyle={}}) => {
+const RNDateTimeSelector = ({dataSet, onValueChange, firstSeperatorComponent, secondSeperatorComponent, seperatorContainerStyle={}, containerStyle={}, scrollPickerOptions={}, textStyle={}, textColor={}}) => {
 
 
    const checkForCurrectIndex = (key, index)=>{
@@ -92,19 +92,39 @@ const returnValue = (data, column)=>{
               <View style={{width: pickerWidth}}>
                   <TimePicker 
                   pickerData={dataSet.data && dataSet.data.firstColumn ? dataSet.data.firstColumn : []} 
-                  selectedIndex={checkForCurrectIndex('firstColumn', dataSet.initials[0]) ? dataSet.initials[0] : 0} setStateMethod={returnValue} column={1}/>
+                  selectedIndex={checkForCurrectIndex('firstColumn', dataSet.initials[0]) ? dataSet.initials[0] : 0} 
+                  setStateMethod={returnValue} 
+                  column={1}
+                  scrollPickerOptions={scrollPickerOptions}
+                  textStyle={textStyle}
+                  textColor={textColor}
+                  />
               </View>
 
-              <SeperatorComponent seperatorComponent={seperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
+              <SeperatorComponent seperatorComponent={firstSeperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
 
               <View style={{width: pickerWidth}}>
-                  <TimePicker pickerData={dataSet.data && dataSet.data.secondColumn ? dataSet.data.secondColumn : []} selectedIndex={checkForCurrectIndex('secondColumn', dataSet.initials[1]) ? dataSet.initials[1] : 0} setStateMethod={returnValue} column={2}/>
+                  <TimePicker pickerData={dataSet.data && dataSet.data.secondColumn ? dataSet.data.secondColumn : []} 
+                  selectedIndex={checkForCurrectIndex('secondColumn', dataSet.initials[1]) ? dataSet.initials[1] : 0} 
+                  setStateMethod={returnValue} 
+                  column={2}
+                  scrollPickerOptions={scrollPickerOptions}
+                  textStyle={textStyle}
+                  textColor={textColor}
+                  />
               </View>
 
-              <SeperatorComponent seperatorComponent={seperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
+              <SeperatorComponent seperatorComponent={secondSeperatorComponent} seperatorContainerStyle={seperatorContainerStyle}/>
 
               <View style={{width: pickerWidth}}>
-                  <TimePicker pickerData={dataSet.data && dataSet.data.thirdColumn ? dataSet.data.thirdColumn : []} selectedIndex={checkForCurrectIndex('thirdColumn', dataSet.initials[2]) ? dataSet.initials[2] : 0} setStateMethod={returnValue} column={3}/>
+                  <TimePicker pickerData={dataSet.data && dataSet.data.thirdColumn ? dataSet.data.thirdColumn : []} 
+                  selectedIndex={checkForCurrectIndex('thirdColumn', dataSet.initials[2]) ? dataSet.initials[2] : 0} 
+                  setStateMethod={returnValue} 
+                  column={3}
+                  scrollPickerOptions={scrollPickerOptions}
+                  textStyle={textStyle}
+                  textColor={textColor}
+                  />
               </View>
           </View>
   )
@@ -119,15 +139,17 @@ const returnValue = (data, column)=>{
 
 const styles = StyleSheet.create({
     mainContainer: {
-        width: setTimerWidthHeight, height: setTimerWidthHeight, flexDirection: 'row', 
+        width: setTimerWidthHeight, 
+        height: setTimerWidthHeight, 
+        flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'center',
         borderWidth: borderWidth, 
         borderColor: '#1a1a1a', 
         borderRadius: setTimerWidthHeight/2,
-        alignSelf: 'center', 
+        alignSelf: 'center',
     }
-  });
+});
 
 
 export default RNDateTimeSelector;
